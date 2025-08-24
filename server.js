@@ -15,6 +15,20 @@ app.use(cors());
 
 // Routes
 app.use("/api/groq", groqRoutes);
+const generatorRoutes = require("./routes/generatorRoutes");
+
+// existing
+app.use("/api/groq", groqRoutes);
+
+// 🆕 new route
+app.use("/api/generator", generatorRoutes);
+
+// server.js
+const sentenceRewriterRoutes = require("./routes/sentenceRewriterRoutes");
+
+// ...baqi middlewares/routes ke sath:
+app.use("/api/sentence", sentenceRewriterRoutes);
+
 
 // Error Middleware
 app.use(errorHandler);
